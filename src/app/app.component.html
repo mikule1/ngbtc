@@ -1,0 +1,21 @@
+
+<div> {{ (user | async)?.uid }} </div>
+<button class="login" (click)="login()">Login</button>
+<button class="logout" (click)="logout()">Logout</button>
+
+<div *ngIf="cryptos">
+  <div *ngIf=eur>
+  <button type="button" (click)="changeCur('usd')">USD</button>
+      <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
+        <span class="left">{{ crypto }}</span>
+        <span class="right">{{ cryptos[crypto].EUR | currency:'EUR':true }}</span>
+      </div>
+  </div>
+  <div *ngIf=usd>
+    <button type="button" (click)="changeCur('eur')">EUR</button>
+        <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)">
+          <span class="left">{{ crypto }}</span>
+          <span class="right">{{ cryptos[crypto].USD | currency:'USD':true }}</span>
+        </div>
+    </div>
+</div>
