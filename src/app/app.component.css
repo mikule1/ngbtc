@@ -1,6 +1,25 @@
+div.login-buttons{
+  height: 36px;
+  width: 100%;
+  
+  background-color: #e8e7e7;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px grey;
+}
+button.login{
+  margin: 0 auto;
+  float:right;
+}
+button.logout{
+  position: right;
+  float:right;
+}
+button.currency{
+  margin-bottom: 5px;
+}
 div#crypto-container {
     background:white;
-    width: 70%;
+    width: 75%;
     margin: 0 auto 4px auto;
     padding: 1em;
     box-shadow: 1px 1px 0 lightgrey;
@@ -12,4 +31,20 @@ div#crypto-container {
   
   span.right {
     float:right;
+  }
+
+  p {
+    font-family: Lato;
+  }
+  
+  div {
+    margin: 0 auto;
+  }
+  
+  h5 {
+    display: inline-block;
+    line-height: 40px;
+    margin: 0px;
+    color: #6b6a6a;
+    font-family: 'Lato';
   }
