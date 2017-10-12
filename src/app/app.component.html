@@ -2,18 +2,29 @@
   <button mat-raised-button color="accent" class="login" (click)="login()">Login With Google</button>
   <button mat-raised-button color="primary" class="logout" (click)="logout()">Logout</button>
 </div>
-<hr>
-<button class="currency" mat-raised-button color="accent" (click)="show = !show" color="accent">{{ show ? 'HIDE' : 'SHOW' }}</button>
-<hr>
+    <hr>
+     <button class="currency" mat-raised-button color="accent" (click)="show = !show" color="accent">{{ show ? 'HIDE' : 'SHOW' }}</button>
+    <hr>
 <div class="container" *ngIf="show" @enterLeave>
     <button mat-mini-fab color="primary" (click)="USD = !USD">{{ USD ? 'USD' : 'EUR' }}</button>
-        <div id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)" >
-          <span class="left">{{ crypto }}</span>
+        <div (click)="selected = !selected" id="crypto-container" *ngFor="let crypto of objectKeys(cryptos)" >
+        
+          <span *ngIf="selected" @selected class="left" >{{ crypto }}</span>
           <div *ngIf="USD">
             <span class="right">{{ cryptos[crypto].EUR | currency:'EUR':true }}</span>
           </div>
           <div *ngIf="!USD">
-            <span class="right">{{ cryptos[crypto].USD | currency:'USD':true }}</span>
+            <span  class="right">{{ cryptos[crypto].USD | currency:'USD':true }}</span>
           </div>
+        </div>  
+</div>
+
+
+
+<button class="charts" mat-raised-button color="accent" (click)="showCharts2 = !showCharts2" color="accent">{{ showCharts2 ? 'HIDE' : 'SHOW' }}</button>
+<hr>
+<div class="container1" *ngIf="showCharts2" >
+        <div id="selectedChart" *ngFor="let chart of objectKeys(charts)" >
+          <span class="left" >{{ charts }}</span>
         </div>
 </div>

@@ -30,20 +30,18 @@ import { trigger, state, style, animate, transition, group } from '@angular/anim
           })
         )
       ]),
-
       // :LEAVE TRANSITION
       // 2 - Uncomment this to apply the leave transition
-      /* transition('* => void', [
+      transition('* => void', [
         animate('1000ms ease-in-out',
           style({
             opacity: 0.2,
             transform: 'translateX(100%)'
           })
         )
-      ])*/
+      ])
 
       // GROUPED ANIMATIONS
-      // Nos permite realizar animaciones en paralelo
       /* transition('* => void', [
         group([
           animate('1s ease',
@@ -62,8 +60,6 @@ import { trigger, state, style, animate, transition, group } from '@angular/anim
     ]),
 
     // CUSTOM STATES
-    // FINAL: Aplica un style final al elemento, una vez que el elemento ya ha
-    // realizado la transición al estado
     trigger('selected', [
       state('selected',
         style({
@@ -101,8 +97,7 @@ import { trigger, state, style, animate, transition, group } from '@angular/anim
 export class AppComponent {
   objectKeys = Object.keys;
   cryptos: any;
-  usd = true;
-  eur = false;
+  charts:any;
   user: Observable<firebase.User>;
 
   constructor(private _data: DataService,
@@ -116,20 +111,20 @@ export class AppComponent {
         this.cryptos = res;
         console.log(res);
       });
-  }
-  changeCur(curr: string){
-    if( curr === 'usd'){
-      this.usd = true;
-      this.eur = false;
-    } else {
-      this.usd = false;
-      this.eur = true;
-    }
+
+      this._data.getCharts()
+      .subscribe(res => {
+        this.charts = res;
+        console.log(res);
+      });
   }
 
-   login() {
+ 
+  
+  login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
+
   logout() {
     this.afAuth.auth.signOut();
   }

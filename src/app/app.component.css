@@ -17,6 +17,10 @@ button.logout{
 button.currency{
   margin-bottom: 5px;
 }
+
+button.charts{
+  margin-bottom: 5px;
+}
 div#crypto-container {
     background:white;
     width: 75%;
@@ -25,11 +29,24 @@ div#crypto-container {
     box-shadow: 1px 1px 0 lightgrey;
   }
   
+  div#selectedChart {
+    background:white;
+    width: 75%;
+    margin: 0 auto 4px auto;
+    padding: 1em;
+    box-shadow: 1px 1px 0 lightgrey;
+  }
+  
+  
   span.left {
     font-weight: bold;
   }
   
   span.right {
+    float:right;
+  }
+
+  span.right1 {
     float:right;
   }
 
